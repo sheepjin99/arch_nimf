@@ -1,82 +1,99 @@
-# 한글 입력기 nimf
+요즘 사용하는 오픈소스 입력기가 마음에 들어 소개하고자 합니다.
 
-![nimf](docs/nimf.png)
+[##_Image|kage@bK5Dsp/btqB0gelQYN/cZWATGnmnRxuRVKLJfLSLK/img.png|alignCenter|data-origin-width="0.0" data-origin-height="0.0"|||_##]
 
-이 프로젝트는 한글입력기 nimf 가 더이상 [지속되기 힘든 상황](https://launchpad.net/~hodong/+archive/ubuntu/nimf) 이 되었기 때문에
-프로젝트의 지속적인 사용을 위해서는 관리가 필요하다고 생각되어 [nimf Project](https://gitlab.com/nimf-i18n/nimf) 를 포크한 프로젝트 입니다.
-다년간 한글 사용자를 위한 환경 개선에 많은 기여를 하신 Hodong Kim 님께 감사를 드립니다. 
+nimf라는 입력기인데, nimf의 뜻은 nimf is an input method framework라고 합니다. 재귀적인 이름부터 근본이 넘치죠? GNU가 Gnu is Not Unix였던거 생각하면 근본력부터가 다릅니다.
 
-하모니카 개발팀은 개방형OS 배포에 필수적인 한글입력기에 대한 관리가 필요하다고 생각하고 있으며
-앞으로 하모니카 팀에서 직접 nimf 프로젝트를 계속 관리하기로 결정하였습니다.
-향후 하모니카 팀에서 이 프로젝트에 필요한 기능을 계속 추가하여 좋은 소프트웨어를 사용할 수 있도록 노력하겠습니다.
+ibus 한글 입력기의 경우, twitter 공식 웹사이트나 pycharm이나 clion등 제트브레인사의 IDE에서 끝 글자가 씹히는 버그가 아직도 안잡히고 있는데, nimf는 그런거 없습니다. 
 
-# 라이선스
-* GNU Lesser General Public License v3.0 ([한글 해석](https://olis.or.kr/license/Detailselect.do?lId=1073))
-  
-  Nimf is free software: you can redistribute it and/or modify it
-  under the terms of the GNU Lesser General Public License as published
-  by the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
+그렇다고 한글만 지원하냐? 절대 아닙니다. 다국어 입력기에요. UI도 깔끔하고, 시스템 트레이에 뜨는 아이콘도 너무 귀엽습니다. 최고에요.
 
-  Nimf is distributed in the hope that it will be useful, but
-  WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  See the GNU Lesser General Public License for more details.
+[##_Image|kage@8IvqA/btqBW1pRkiw/vDEDNlFcf6QXvzz4wyAcw0/img.png|alignCenter|data-origin-width="0.0" data-origin-height="0.0"|'한' 겁나 귀엽지 않습니까?||_##]
 
-  You should have received a copy of the GNU Lesser General Public License
-  along with this program;  If not, see <http://www.gnu.org/licenses/>.
+근데 문제는 현재 nimf 개발이 진행되지 않고 있어서, 패키지저장소에서는 outdated라고 뜹니다. (apt저장소는 모르겠습니다만 최소한 yaourt에서는 그렇습니다.) 따라서 nimf 의존성 패키지들을 yaourt로 한번에 깔고, gitlab에 있는 파일을 수정해서 수동으로 설치합니다.
 
-# 한글입력기 nimf 설치법
+> yaourt nimf
 
-먼저 하모니카 APT 저장소를 추가해 줍니다.
+[##_Image|kage@cbo1WG/btqBZsfl8q4/7vRxcC17RdCKt3aoKp6bTK/img.png|alignCenter|data-origin-width="0.0" data-origin-height="0.0"|||_##]
 
-## 1) apt 저장소 추가
-```
-wget -O - http://apt.hamonikr.org/hamonikr.key | sudo apt-key add -
+어차피 의존 패키지만 깔고 빌드해도 GTimeVal에서 오류가나서 빌드가 안되니, PKGBUILD 편집 스킵하고 바로 깝시다.
 
-sudo bash -c "echo 'deb https://apt.hamonikr.org sun main upstream' > /etc/apt/sources.list.d/hamonikr-sun.list"
+이후 [https://gitlab.com/nimf-i18n/nimf/](https://gitlab.com/nimf-i18n/nimf/) 에 가서, 파일을 다운받거나 클론을 뜹니다.
 
-sudo bash -c "echo 'deb-src https://apt.hamonikr.org sun main upstream' >> /etc/apt/sources.list.d/hamonikr-sun.list"
-```
+[
 
-## 2) 추가한 저장소의 프로그램 목록을 업데이트합니다.
-```
-sudo apt-get update
-```
+nimf-i18n / nimf
 
-## 3) 한글입력기를 설치합니다.
-```
-sudo apt install nimf nimf-libhangul
+Nimf is an input method framework https://nimf-i18n.gitlab.io
 
-im-config -n nimf
-```
-
-# 프로그램 소스
-## apt
-apt를 사용할 수 있는 경우에는 아래와 같이 명령해서 프로그램 소스코드를 내려받을 수 있습니다.
-```
-apt source nimf
-```
-
-## git
-프로그램 소스코드를 직접 다운로드 받는 경우 아래 경로에서 다운로드 가능합니다.
-```
-git clone https://github.com/hamonikr/nimf.git
-```
-
-## 압축파일로 소스코드 다운로드
-https://github.com/hamonikr/nimf/releases
+gitlab.com
 
 
-# 프로그램 소스코드 deb 빌드
 
-* HamoniKR (>= 1.4), ubuntu 18.04, linuxmint (>= 19) 에서 테스트 되었습니다.
+](https://gitlab.com/nimf-i18n/nimf)
 
-https://github.com/hamonikr/nimf/wiki/build
+[##_Image|kage@bwsQJb/btqBWDbIpAR/Qozeq9Zf55Q2WXoT9IYKeK/img.png|alignCenter|data-origin-width="0.0" data-origin-height="0.0"|개발자 선생님 정말 감사합니다. (--)(__)||_##][##_Image|kage@ldT8x/btqBZqht3uD/BQmlEsVNFaO2KyeQdQTY6K/img.png|alignCenter|data-origin-width="0.0" data-origin-height="0.0"|||_##]
+
+이후 configure.ac를 텍스트 에디터로 열어서 편집해줍니다.
+
+[##_Image|kage@nSlkM/btqBZglQxcw/kYbaeNkLGoYXTlkb6RSeZ1/img.png|alignCenter|data-origin-width="0.0" data-origin-height="0.0"|||_##]
+
+25번째줄을 보면
+
+> EXTRA\_CFLAGS="-Wall -Werror"
+
+이라고 되어 있는데, 이를 
+
+> EXTRA\_CFLAGS=”-Wno-error”
+
+바꾸고 저장합니다.
+
+참고자료: [https://blog.enyou.kr/archives/424](https://blog.enyou.kr/archives/424)
+
+[
+
+우분투 19.10에서의 nimf 설치 – Atelier Enyou
+
+우분투 19.10에서의 nimf 설치 nimf는 리눅스 한글 입력기 중에서 거의 유일하다시피 첫 글자 및 끝 글자 버그가 발생하지 않는 입력기이다. 그렇기 때문에 기분 좋은 한글 생활을 위해서는 nimf가 필수이지만, 최근 안 좋은 사건으로 인해 개발을 하시던 분이 개발을 그만 두게 되었다. 다행히도, 저장소와 gitlab을 남겨두셨기 때문에 우분투 19.04 이하 사용자는 PPA 저장소를 이용하면 되고, 19.10 이상 사용자라면 gitlab의 빌드 절
+
+blog.enyou.kr
 
 
-# 이슈 발생 시
-사용중 이슈는 깃헙 이슈를 이용하시거나 [하모니카 커뮤니티](https://hamonikr.org)를 방문해서 알려주시면 함께 고민하도록 하겠습니다.
 
-# 소스코드 개선에 참여하는 법
-깃헙 저장소를 포크하신 후 수정하실 내용을 수정하고 PR을 요청하시면 하모니카 팀에서 리뷰 후 대응합니다.
+](https://blog.enyou.kr/archives/424)
+
+**Update. 2020/03/08 10:44 PM**
+
+**위의 과정이 귀찮으신분은 제가 포크뜨고 에러 무시하게끔 수정한 레포지터리를 사용하셔도 됩니다. **
+
+**\+ 님프는 한국어 입력기가 아니라 다국어 입력기 입니다.**
+
+**[https://github.com/sheepjin99/nimf](https://github.com/sheepjin99/nimf)**
+
+[
+
+sheepjin99/nimf
+
+우주최강 다국어 입력기 nimf. Contribute to sheepjin99/nimf development by creating an account on GitHub.
+
+github.com
+
+
+
+](https://github.com/sheepjin99/nimf)
+
+이후 터미널에서 ./autogen.sh 를 실행합니다.
+
+[##_Image|kage@sAqhR/btqBZMdwpwp/nDulxOR8Z2XEoNdQ3mK9Z0/img.png|alignCenter|data-origin-width="0.0" data-origin-height="0.0"|||_##][##_Image|kage@cj6UkI/btqBXFmAEhK/TRN4gBqgCwPSL2XoEmGg7k/img.png|alignCenter|data-origin-width="0.0" data-origin-height="0.0"|||_##]
+
+이후는 님프 깃랩([https://gitlab.com/nimf-i18n/nimf/](https://gitlab.com/nimf-i18n/nimf/))을 따라하면 정말 잘 설치됩니다! 
+
+제가 이 입력기를 사랑하는 이유는 
+
+1\. 트위터 공식 웹사이트에서 끝 단어가 사라지는 버그가 없습니다.(중요)
+
+2\. 타이핑을 할 때 뭔가 착착 달라붙는 느낌입니다. 반응속도에도 차이가 있으려나요? 플라시보일지도 모릅니다.
+
+GTimeVal 에러를 넘어가는 방식을 취했지만 나중에 deceperated 되면 nimf를 사용하지 못할수도 있겠네요 ㅠㅠ 
+
+아직은 가이드를 따라하는 수준밖에 못되지만 공부 열심히해서 고쳐보고 싶습니다...
