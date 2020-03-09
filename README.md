@@ -1,4 +1,4 @@
-## Nimf
+# Nimf
 Nimf is a lightweight, fast and extensible input method framework.
 
 ![screenshot.png](./images/screenshot.png)
@@ -26,11 +26,11 @@ Nimf provides:
   * Development files:
     * C library, headers and documents
 
-# Project Homepage:
+## Project Homepage:
   * https://gitlab.com/nimf-i18n/nimf
   * https://nimf-i18n.gitlab.io
 
-# Installation
+## Installation
     ./autogen.sh
 
       make
@@ -43,7 +43,7 @@ Nimf provides:
 
       sudo make uninstall
       
-# License
+## License
 
   Nimf is free software: you can redistribute it and/or modify it
   under the terms of the GNU Lesser General Public License as published
